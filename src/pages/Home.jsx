@@ -119,9 +119,9 @@ const Home = () => {
       </HomeTitle>
       <ToolsWrapper>
         <ToolsContainer>
-          {config?.map(({ title, subTitle, icon }) => (
+          {config?.map(({ title, subTitle, icon, path }) => (
             <ToolsItem key={uuidv4()}>
-              <Link to="/password-generator">
+              <Link to={path}>
                 <ToolsItemIcon>{icon}</ToolsItemIcon>
                 <CustomTypoGraphy variant="h6">{title}</CustomTypoGraphy>
                 <CustomTypoGraphy variant="subtitle1">
