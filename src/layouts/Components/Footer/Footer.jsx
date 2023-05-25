@@ -96,8 +96,9 @@ const FooterContainer = styled.div({
   height: "60px",
   textAlign: "center",
   display: "flex",
-  justifyContent: "center",
+  alignItems: "center",
   color: "#1976d2",
+  justifyContent: "center",
 });
 
 const Footer = () => {
