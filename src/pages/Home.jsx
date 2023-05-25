@@ -5,6 +5,7 @@ import { styled as muiStyled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { config } from "../utils/config";
+import { useEffect } from "react";
 
 const HomeTitle = styled.div({
   position: "relative",
@@ -103,6 +104,9 @@ const ToolsItemIcon = styled.div({
 });
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <HomeTitle>

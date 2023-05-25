@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Typography from "@mui/material/Typography";
 import { styled as muiStyled } from "@mui/system";
@@ -93,6 +93,10 @@ const PasswordGenerator = () => {
   const [includeLowercase, setLowercase] = useState(true);
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const random = (min = 0, max = 1) => {
     return Math.floor(Math.random() * (max + 1 - min) + min);
