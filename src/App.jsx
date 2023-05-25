@@ -9,6 +9,7 @@ import {
 import PrivateRoutes from "./routes/PrivateRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import Home from "./pages/Home";
+import PasswordGenerator from "./pages/PasswordGenerator";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           </Route>
           <AuthRoutes exact path="/login" component={"Login"} />
           <PrivateRoutes path="/home" component={Home} />
+          <PrivateRoutes
+            path="/password-generator"
+            component={PasswordGenerator}
+          />
         </Switch>
       </Router>
     </>
