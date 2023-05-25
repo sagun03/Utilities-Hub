@@ -8,6 +8,7 @@ import {
 
 import PrivateRoutes from "./routes/PrivateRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -15,10 +16,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/login" />
+            <Redirect to="/home" />
           </Route>
           <AuthRoutes exact path="/login" component={"Login"} />
-          <PrivateRoutes path="/" component={"Home"} />
+          <PrivateRoutes path="/home" component={Home} />
         </Switch>
       </Router>
     </>
