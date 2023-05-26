@@ -10,6 +10,7 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
 import Home from "./pages/Home";
 import PasswordGenerator from "./pages/PasswordGenerator";
+import PxToRem from "./pages/PxToRem";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
             path="/markdown-editor"
             component={"<>markdown-editor</>"}
           />
-          <PrivateRoutes path="/px-to-rem" component={"<>px-to-rem</>"} />
+          <PrivateRoutes path="/px-to-rem" component={PxToRem} />
           <PrivateRoutes
             path="/pomodoro-timer"
             component={"PasswordGenerator"}

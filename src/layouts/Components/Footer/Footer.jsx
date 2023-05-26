@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 const Cointainer = styled.div`
   display: flex;
   background-color: #fafafa;
-  padding-top: 30px;
 `;
 
 const Left = styled.div`

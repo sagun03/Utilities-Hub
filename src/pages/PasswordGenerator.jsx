@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Typography from "@mui/material/Typography";
 import { styled as muiStyled } from "@mui/system";
-import pg from "../utils/img/PG.jpg";
+import pg from "../utils/img/PG2.jpg";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import NumbersIcon from "@mui/icons-material/Numbers";
@@ -18,7 +18,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 const Wrapper = styled.div({
   display: "flex",
   flexDirection: "column",
-  background: "#F8F8F8",
+  background: "#F3F0EC",
   padding: ".5rem",
 });
 
@@ -50,12 +50,12 @@ const Content = styled.div({
 
 const ImageContainer = styled.div({
   width: "45%",
-  margin: "0 3.5rem",
+  margin: "6rem 3rem",
   overflow: "hidden",
 });
 
 const Image = styled.img({
-  maxWidth: "100%",
+  width: "75%",
   height: "auto",
 });
 
@@ -76,8 +76,8 @@ const Container = styled.div({
   "-webkit-border-radius": "20px",
   "-o-border-radius": "20px",
   "-ms-border-radius": "20px",
-  padding: "1.5rem 0",
-  margin: "1.5rem 5rem",
+  padding: "2rem 0",
+  margin: "3rem 10rem",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

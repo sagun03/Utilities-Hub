@@ -19,6 +19,13 @@ export const config = [
     path: "/password-generator",
   },
   {
+    title: "PX to REM",
+    subTitle:
+      "A tool that converts pixels to the CSS unit REM. The conversion is based on the default font-size of 16 pixel, but can be changed.",
+    icon: <AutoModeIcon sx={{ color: "#e91e63" }} />,
+    path: "/px-to-rem",
+  },
+  {
     title: "BMI Calculator",
     subTitle:
       "A Body Mass Index (BMI) calculator that allows users to input their height and weight and calculates their BMI, providing information on whether they fall into underweight, normal weight, overweight, or obese categories.",
@@ -52,13 +59,6 @@ export const config = [
       "a Markdown editor that provides a user-friendly interface for writing and previewing Markdown-formatted text. Users can create formatted content and export it to HTML or other formats.",
     icon: <CodeIcon sx={{ color: "#3f51b5" }} />,
     path: "/markdown-editor",
-  },
-  {
-    title: "PX to REM",
-    subTitle:
-      "A tool that converts pixels to the CSS unit REM. The conversion is based on the default font-size of 16 pixel, but can be changed.",
-    icon: <AutoModeIcon sx={{ color: "#e91e63" }} />,
-    path: "/px-to-rem",
   },
   {
     title: "Pomodoro Timer",
