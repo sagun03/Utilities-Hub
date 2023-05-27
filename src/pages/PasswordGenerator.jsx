@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Typography from "@mui/material/Typography";
 import { styled as muiStyled } from "@mui/system";
-import pg from "../utils/img/PG2.jpg";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import NumbersIcon from "@mui/icons-material/Numbers";
@@ -42,25 +41,9 @@ const Form = styled.form({
 });
 
 const Content = styled.div({
-  width: "50%",
-  margin: "0 5.5rem",
-  paddingLeft: "1rem",
+  width: "100%",
+  margin: "0rem 6rem 2rem",
   overflow: "hidden",
-});
-
-const ImageContainer = styled.div({
-  width: "45%",
-  margin: "6rem 3rem",
-  overflow: "hidden",
-});
-
-const Image = styled.img({
-  width: "75%",
-  height: "auto",
-});
-
-const ContentWrapper = styled.div({
-  display: "flex",
 });
 
 const Container = styled.div({
@@ -98,6 +81,9 @@ const PasswordGenerator = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    setPassword("");
+  }, [includeNumbers, includeSymbols, includeLowercase, includeUppercase]);
   const random = (min = 0, max = 1) => {
     return Math.floor(Math.random() * (max + 1 - min) + min);
   };
@@ -126,8 +112,21 @@ const PasswordGenerator = () => {
     }
 
     let password = "";
+    let validate = [];
     for (let i = 0; i < passwordLength; i++) {
       let choice = random(0, 3);
+      validate.push(choice);
+      validate = [...new Set(validate)];
+      if (i === passwordLength - 1 && validate?.length !== 4) {
+        if (validate.length === 3) {
+          const expectedSum = 6;
+          const actualSum = validate?.reduce((sum, num) => sum + num, 0);
+          const leftChoice = expectedSum - actualSum;
+          if (leftChoice >= 0) {
+            choice = leftChoice;
+          }
+        }
+      }
       if (includeLowercase && choice === 0) {
         password += randomLower();
       } else if (includeUppercase && choice === 1) {
@@ -177,89 +176,108 @@ const PasswordGenerator = () => {
   return (
     <Wrapper>
       <Container>
-        <ContentWrapper>
-          <Content>
-            <CustomTypoGraphy variant="h4">Password Generator</CustomTypoGraphy>
-            <Form onSubmit={generatePassword}>
-              <TextField
-                id="input-with-icon-textfield"
-                placeholder="Password Length"
-                type="number"
-                min="6"
-                value={passwordLength}
-                onChange={(e) => setPasswordLength(parseInt(e.target.value))}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <NumbersIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                error={
-                  !passwordLength || passwordLength < 8 || passwordLength > 20
-                }
-                variant="outlined"
-                helperText={getHelperText(passwordLength)}
-              />
-              <FormControlLabel
-                checked={includeUppercase}
-                sx={{ display: "flex", gap: "2rem", marginLeft: "0rem" }}
-                control={
-                  <Checkbox onChange={(e) => setUppercase(e.target.checked)} />
-                }
-                label="Include One UpperCase:"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                checked={includeLowercase}
-                sx={{ display: "flex", gap: "2.5rem", marginLeft: "0rem" }}
-                control={
-                  <Checkbox onChange={(e) => setLowercase(e.target.checked)} />
-                }
-                label="Include One LoweCase:"
-                labelPlacement="start"
-              />
+        <Content>
+          <CustomTypoGraphy variant="h4">Password Generator</CustomTypoGraphy>
+          <Form onSubmit={generatePassword}>
+            <TextField
+              id="input-with-icon-textfield"
+              placeholder="Password Length"
+              type="number"
+              min="6"
+              value={passwordLength}
+              onChange={(e) => setPasswordLength(parseInt(e.target.value))}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <NumbersIcon />
+                  </InputAdornment>
+                ),
+              }}
+              error={
+                !passwordLength || passwordLength < 8 || passwordLength > 20
+              }
+              variant="outlined"
+              helperText={getHelperText(passwordLength)}
+              sx={{ marginBottom: "1rem" }}
+            />
+            <FormControlLabel
+              checked={includeUppercase}
+              sx={{
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-between",
+                marginLeft: "0rem",
+              }}
+              control={
+                <Checkbox onChange={(e) => setUppercase(e.target.checked)} />
+              }
+              label="Include One UpperCase:"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              checked={includeLowercase}
+              sx={{
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-between",
+                marginLeft: "0rem",
+              }}
+              control={
+                <Checkbox onChange={(e) => setLowercase(e.target.checked)} />
+              }
+              label="Include One LoweCase:"
+              labelPlacement="start"
+            />
 
-              <FormControlLabel
-                checked={includeNumbers}
-                sx={{ display: "flex", gap: "5.2rem", marginLeft: "0rem" }}
-                control={
-                  <Checkbox
-                    onChange={(e) => setIncludeNumbers(e.target.checked)}
-                  />
-                }
-                label="Include Numbers:"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                checked={includeSymbols}
-                sx={{ display: "flex", gap: "5.5rem", marginLeft: "0rem" }}
-                control={
-                  <Checkbox
-                    onChange={(e) => setIncludeSymbols(e.target.checked)}
-                  />
-                }
-                label="Include Symbols:"
-                labelPlacement="start"
-              />
-              <Button
-                variant="contained"
-                onClick={() => generatePassword()}
-                disabled={
-                  !passwordLength || passwordLength < 8 || passwordLength > 20
-                }
-              >
-                Generate Password
-              </Button>
-            </Form>
-          </Content>
-          <ImageContainer>
+            <FormControlLabel
+              checked={includeNumbers}
+              sx={{
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-between",
+                marginLeft: "0rem",
+              }}
+              control={
+                <Checkbox
+                  onChange={(e) => setIncludeNumbers(e.target.checked)}
+                />
+              }
+              label="Include Numbers:"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              checked={includeSymbols}
+              sx={{
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-between",
+                marginLeft: "0rem",
+              }}
+              control={
+                <Checkbox
+                  onChange={(e) => setIncludeSymbols(e.target.checked)}
+                />
+              }
+              label="Include Symbols:"
+              labelPlacement="start"
+            />
+            <Button
+              variant="contained"
+              onClick={() => generatePassword()}
+              disabled={
+                !passwordLength || passwordLength < 8 || passwordLength > 20
+              }
+            >
+              Generate Password
+            </Button>
+          </Form>
+        </Content>
+        {/* <ImageContainer>
             <Image src={pg} alt="pg image" />
-          </ImageContainer>
-        </ContentWrapper>
+          </ImageContainer> */}
         {Boolean(password) && (
           <>
-            Your Password
+            Your Password Is:
             <Paper
               component="form"
               sx={{

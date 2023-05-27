@@ -31,17 +31,19 @@ const CustomTypoGraphy = muiStyled(Typography)((props) => ({
   marginBottom: ".5rem",
 }));
 
-const Form = styled.form({
+const Form = styled.div({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  gap: "4rem",
+  flexDirection: "column",
+  gap: "1rem",
   paddingBottom: "1rem",
 });
 
 const Content = styled.div({
   width: "100%",
   margin: "2 6rem",
+  paddingLeft: "1rem",
   overflow: "hidden",
 });
 
@@ -88,63 +90,191 @@ const StyleContent = styled.div((props) => ({
   backgroundColor: props.backgroundColor,
   color: props.color,
 }));
-const PxToRem = () => {
-  const [pixels, setPixels] = useState(0);
-  const [rem, setRem] = useState(0);
-  const [baseValue, setBaseValue] = useState(16);
+const BmiCalc = () => {
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("male");
+  const [activityLevel, setActivityLevel] = useState("sedentary");
+  const [bodyComposition, setBodyComposition] = useState("");
+  const [bmi, setBMI] = useState("");
+  const [bmr, setBMR] = useState("");
+  const [calorieIntake, setCalorieIntake] = useState("");
+  const [muscleMass, setMuscleMass] = useState("");
   const [isCopied, setIsCopied] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const copyTextToClipboard = async (text) => {
-    if ("clipboard" in navigator) {
-      return await navigator.clipboard.writeText(text);
-    } else {
-      return document.execCommand("copy", true, text);
-    }
-  };
-  const handleCopyClick = (type) => {
-    // Asynchronously call copyTextToClipboard
-    const value = type === "px" ? `${pixels}px` : `${rem}rem`;
-    copyTextToClipboard(value)
-      .then(() => {
-        // If successful, update the isCopied state value
-        setIsCopied(true);
-        setTimeout(() => {
-          setIsCopied(false);
-        }, 2500);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const convertPxToRem = (value, fromUnit, toUnit) => {
-    if (fromUnit === "px" && toUnit === "rem") {
-      const remValue = value / baseValue;
-      setPixels(value);
-      setRem(remValue % 1 !== 0 ? remValue.toFixed(3) : remValue);
-    } else if (fromUnit === "rem" && toUnit === "px") {
-      const pixelValue = value * baseValue;
-      setRem(value);
-      setPixels(pixelValue % 1 !== 0 ? pixelValue.toFixed(3) : pixelValue);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+  const calculateBMI = () => {
+    if (weight && height) {
+      const heightInMeters = height / 100; // Convert height from cm to meters
+      const bmiValue = weight / (heightInMeters * heightInMeters);
+      setBMI(bmiValue.toFixed(2)); // Round BMI to two decimal places
     }
   };
 
-  useEffect(() => {
-    if (baseValue) {
-      convertPxToRem(pixels, "px", "rem");
+  const calculateBMR = () => {
+    if (weight && height && age) {
+      let bmrValue;
+      if (gender === "male") {
+        bmrValue = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmrValue = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+      setBMR(bmrValue.toFixed(2)); // Round BMR to two decimal places
     }
-  }, [baseValue, convertPxToRem]);
+  };
+
+  const calculateCalorieIntake = () => {
+    if (bmr && activityLevel) {
+      let calorieIntakeValue;
+      switch (activityLevel) {
+        case "sedentary":
+          calorieIntakeValue = bmr * 1.2;
+          break;
+        case "lightlyActive":
+          calorieIntakeValue = bmr * 1.375;
+          break;
+        case "moderatelyActive":
+          calorieIntakeValue = bmr * 1.55;
+          break;
+        case "veryActive":
+          calorieIntakeValue = bmr * 1.725;
+          break;
+        case "extraActive":
+          calorieIntakeValue = bmr * 1.9;
+          break;
+        default:
+          calorieIntakeValue = bmr;
+      }
+      setCalorieIntake(calorieIntakeValue.toFixed(2)); // Round calorie intake to two decimal places
+    }
+  };
+
+  const calculateMuscleMass = () => {
+    if (weight && bodyComposition) {
+      const muscleMassValue = weight * (bodyComposition / 100);
+      setMuscleMass(muscleMassValue.toFixed(2)); // Round muscle mass to two decimal places
+    }
+  };
+
+  // const copyTextToClipboard = async (text) => {
+  //   if ("clipboard" in navigator) {
+  //     return await navigator.clipboard.writeText(text);
+  //   } else {
+  //     return document.execCommand("copy", true, text);
+  //   }
+  // };
+  // const handleCopyClick = (type) => {
+  //   // Asynchronously call copyTextToClipboard
+  //   const value = type === "px" ? `${pixels}px` : `${rem}rem`;
+  //   copyTextToClipboard(value)
+  //     .then(() => {
+  //       // If successful, update the isCopied state value
+  //       setIsCopied(true);
+  //       setTimeout(() => {
+  //         setIsCopied(false);
+  //       }, 2500);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <Wrapper>
       <Container>
         <Content>
-          <CustomTypoGraphy variant="h4">PX to REM Converter</CustomTypoGraphy>
+          <CustomTypoGraphy variant="h4">
+            Detailed Fitness and Health Calculator
+          </CustomTypoGraphy>
           <Form>
+            <div>
+              <label>Weight (kg):</label>
+              <input
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Height (cm):</label>
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Age:</label>
+              <input
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Gender:</label>
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <button onClick={() => calculateBMI()}>Calculate BMI</button>
+            {bmi && <p>Your BMI is: {bmi}</p>}
+
+            <div>
+              <label>Body Composition (%):</label>
+              <input
+                type="number"
+                value={bodyComposition}
+                onChange={(e) => setBodyComposition(e.target.value)}
+              />
+            </div>
+            <button onClick={calculateMuscleMass}>Calculate Muscle Mass</button>
+            {muscleMass && <p>Your Muscle Mass is: {muscleMass} kg</p>}
+
+            <button onClick={calculateBMR}>Calculate BMR</button>
+            {bmr && <p>Your BMR is: {bmr} calories/day</p>}
+
+            <div>
+              <label>Activity Level:</label>
+              <select
+                value={activityLevel}
+                onChange={(e) => setActivityLevel(e.target.value)}
+              >
+                <option value="sedentary">
+                  Sedentary (little to no exercise)
+                </option>
+                <option value="lightlyActive">
+                  Lightly Active (light exercise/sports 1-3 days/week)
+                </option>
+                <option value="moderatelyActive">
+                  Moderately Active (moderate exercise/sports 3-5 days/week)
+                </option>
+                <option value="veryActive">
+                  Very Active (hard exercise/sports 6-7 days/week)
+                </option>
+                <option value="extraActive">
+                  Extra Active (very hard exercise/sports and a physical job)
+                </option>
+              </select>
+            </div>
+            <button onClick={calculateCalorieIntake}>
+              Calculate Daily Calorie Intake
+            </button>
+            {calorieIntake && (
+              <p>
+                Your suggested daily calorie intake is: {calorieIntake}{" "}
+                calories/day
+              </p>
+            )}
+          </Form>
+          {/* <Form>
             <ContentWrapper>
               {" "}
               <CustomTypoGraphy variant="h6">Pixels</CustomTypoGraphy>
@@ -250,7 +380,7 @@ const PxToRem = () => {
                 }}
               />
             </ContentWrapper>
-          </StyleWrapper>
+          </StyleWrapper> */}
         </Content>
       </Container>
       {Boolean(isCopied) && (
@@ -265,4 +395,4 @@ const PxToRem = () => {
   );
 };
 
-export default PxToRem;
+export default BmiCalc;

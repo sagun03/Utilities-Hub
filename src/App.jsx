@@ -11,6 +11,7 @@ import AuthRoutes from "./routes/AuthRoutes";
 import Home from "./pages/Home";
 import PasswordGenerator from "./pages/PasswordGenerator";
 import PxToRem from "./pages/PxToRem";
+import BmiCalc from "./pages/BmiCalc";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             path="/password-generator"
             component={PasswordGenerator}
           />
-          <PrivateRoutes path="/bmi-calculator" component={"bmi-calculator"} />
+          <PrivateRoutes path="/bmi-calculator" component={BmiCalc} />
           <PrivateRoutes
             path="/currency-convertor"
             component={"currency-convertor"}
