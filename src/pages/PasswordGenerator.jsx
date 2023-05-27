@@ -297,7 +297,7 @@ const PasswordGenerator = () => {
           open={isCopied}
           type={"info"}
           message={"Password has been copied to Clipboard"}
-          setOpen={setError}
+          setOpen={setIsCopied}
         />
       )}
     </Wrapper>
