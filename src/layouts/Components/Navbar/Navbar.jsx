@@ -68,7 +68,6 @@ const Navbar = () => {
     localStorage.removeItem("Token");
   };
   let location = useLocation();
-  console.log("location.pathname", location.pathname);
   return (
     <NavBarContainer>
       <AppBar position="fixed" sx={{ background: "#fff", height: "3.75rem" }}>
@@ -90,15 +89,15 @@ const Navbar = () => {
               </CustomButton>
             </Link>
 
-            <Link to="/bmi-Calculator">
+            <Link to="/bmi-calculator">
               {" "}
               <CustomButton
-                selected={location.pathname === "/bmi-Calculator"}
+                selected={location.pathname === "/bmi-calculator"}
                 size="small"
                 disableFocusRipple
                 disableRipple
               >
-                BMI Calculator
+                Fitness & Health Calculator
               </CustomButton>
             </Link>
 

@@ -26,9 +26,9 @@ export const config = [
     path: "/px-to-rem",
   },
   {
-    title: "BMI Calculator",
+    title: "Fitness and Health Calculator",
     subTitle:
-      "A Body Mass Index (BMI) calculator that allows users to input their height and weight and calculates their BMI, providing information on whether they fall into underweight, normal weight, overweight, or obese categories.",
+      "The Detailed Fitness and Health Calculator is a comprehensive tool that provides various measurements and calculations related to fitness and health.",
     icon: <CalculateIcon sx={{ color: "#f44336" }} />,
     path: "/bmi-calculator",
   },
