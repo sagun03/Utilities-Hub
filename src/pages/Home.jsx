@@ -28,10 +28,7 @@ const getColor = (variant) => {
 };
 
 const CustomTypoGraphy = muiStyled(Typography)((props) => ({
-  textAlign:
-    props?.variant === "h6" || props?.variant === "subtitle1"
-      ? "flex-start"
-      : "center",
+  textAlign: props?.variant === "h6" ? "flex-start" : "center",
   marginLeft: "auto",
   marginRight: "auto",
   color: getColor(props.variant),
@@ -92,10 +89,16 @@ const ToolsItem = styled.div({
     position: "relative",
     zIndex: "2",
     textDecoration: "none",
+    display: "flex",
+    flexDirection: "column",
   },
 });
 
 const ToolsItemIcon = styled.div({
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: "1.5rem",
+
   svg: {
     width: "2.6rem",
     transition: "all .4s ease-out",

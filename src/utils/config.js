@@ -33,6 +33,13 @@ export const config = [
     path: "/bmi-calculator",
   },
   {
+    title: "QR Code Generator",
+    subTitle:
+      "A tool that generates QR codes from text, URLs, or contact information. Users can input their desired content, and the tool generates a scannable QR code that can be used for various purposes.",
+    icon: <QrCodeScannerIcon sx={{ color: "#4caf50" }} />,
+    path: "/qr-code-generator",
+  },
+  {
     title: "Currency Converter",
     subTitle:
       "A tool that converts between different currencies using real-time exchange rates. Users can input the amount in one currency and see the equivalent amount in another currency.",
@@ -66,13 +73,6 @@ export const config = [
       "A a Pomodoro technique timer that helps users manage their time and improve productivity. It includes adjustable work and break intervals, notifications, and tracking features",
     icon: <ShutterSpeedIcon sx={{ color: "#18ff" }} />,
     path: "/pomodoro-timer",
-  },
-  {
-    title: "QR Code Generator",
-    subTitle:
-      "A tool that generates QR codes from text, URLs, or contact information. Users can input their desired content, and the tool generates a scannable QR code that can be used for various purposes.",
-    icon: <QrCodeScannerIcon sx={{ color: "#4caf50" }} />,
-    path: "/qr-code-generator",
   },
   {
     title: "Password Strength Checker",

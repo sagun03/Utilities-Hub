@@ -182,6 +182,7 @@ const PasswordGenerator = () => {
             <TextField
               id="input-with-icon-textfield"
               placeholder="Password Length"
+              label="Length"
               type="number"
               min="6"
               value={passwordLength}

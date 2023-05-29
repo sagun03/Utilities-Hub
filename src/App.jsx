@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import PasswordGenerator from "./pages/PasswordGenerator";
 import PxToRem from "./pages/PxToRem";
 import BmiCalc from "./pages/BmiCalc";
+import CurrencyConverter from "./pages/CurrencyConverter";
+import QrCode from "./pages/QrCode";
 
 function App() {
   return (
@@ -31,7 +33,7 @@ function App() {
           <PrivateRoutes path="/bmi-calculator" component={BmiCalc} />
           <PrivateRoutes
             path="/currency-convertor"
-            component={"currency-convertor"}
+            component={CurrencyConverter}
           />
           <PrivateRoutes
             path="/image-compressor"
@@ -47,10 +49,7 @@ function App() {
             path="/pomodoro-timer"
             component={"PasswordGenerator"}
           />
-          <PrivateRoutes
-            path="/qr-code-generator"
-            component={"PasswordGenerator"}
-          />
+          <PrivateRoutes path="/qr-code-generator" component={QrCode} />
           <PrivateRoutes
             path="/password-strength-checker"
             component={"PasswordGenerator"}
