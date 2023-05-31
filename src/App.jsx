@@ -32,7 +32,7 @@ function App() {
           />
           <PrivateRoutes path="/bmi-calculator" component={BmiCalc} />
           <PrivateRoutes
-            path="/currency-convertor"
+            path="/currency-converter"
             component={CurrencyConverter}
           />
           <PrivateRoutes

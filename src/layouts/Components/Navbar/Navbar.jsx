@@ -37,8 +37,6 @@ const ButtonWrapper = styled.div({
 const MenuWrapper = styled.div({
   justifyContent: "flex-end",
   display: "flex",
-  height: "95%",
-  marginBottom: "0.3rem",
 });
 
 const CustomButton = muiStyled(Button)((props) => ({
@@ -70,8 +68,8 @@ const Navbar = () => {
   let location = useLocation();
   return (
     <NavBarContainer>
-      <AppBar position="fixed" sx={{ background: "#fff", height: "3.75rem" }}>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ background: "#fff", height: "3rem" }}>
+        <Toolbar sx={{ background: "#fff", minHeight: "3rem !important" }}>
           <LogoWrapper>
             <Link to="/home">
               <Logo src={logo} alt="logo" />

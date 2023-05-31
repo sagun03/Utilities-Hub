@@ -6,10 +6,48 @@ const CurrencyConverter = () => {
   const [amount, setAmount] = useState(1);
   const [exchangeRate, setExchangeRate] = useState(null);
   const [convertedAmount, setConvertedAmount] = useState(null);
+  const [reelUrl, setReelUrl] = useState(
+    "https://www.instagram.com/reel/Csjmv_Igi0Q/?igshid=NjFhOGMzYTE3ZQ=="
+  );
+  const [responseObj, setResponseObj] = useState();
 
   useEffect(() => {
     fetchExchangeRate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseCurrency, targetCurrency]);
+
+  const getId = (url) => {
+    return url.split("reel/")[1].split(" ")[0].slice(0, 11);
+  };
+  console.log(
+    "process.env.REACT_APP_RAPIDAPI_KEY",
+    process.env.REACT_APP_RAPIDAPI_KEY
+  );
+  const onChangehandler = (e) => {
+    setReelUrl(e.target.value);
+  };
+  const fetchReel = async () => {
+    const reelId = getId(reelUrl);
+    console.log("reelId", reelId);
+    console.log(reelId);
+    if (reelId.length !== 11) {
+      alert("Invaid Reel URL");
+      return;
+    }
+    const response = await fetch(
+      `https://instagram-bulk-profile-scrapper.p.rapidapi.com/clients/api/ig/media_by_id?shortcode=${reelId}&response_type=reels&corsEnabled=false`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key": `${process.env.REACT_APP_RAPIDAPI_KEY}`,
+          "x-rapidapi-host": "instagram-bulk-profile-scrapper.p.rapidapi.com",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    setResponseObj(data[0].items[0]);
+  };
 
   const fetchExchangeRate = async () => {
     try {
@@ -68,7 +106,49 @@ const CurrencyConverter = () => {
           {/* Add more currency options here */}
         </select>
       </div>
-      <button onClick={convertCurrency}>Convert</button>
+      <button onClick={fetchReel}>Convert</button>
+      {responseObj && (
+        <>
+          {" "}
+          <header className="reel-header">
+            <div className="reel-creator">
+              <img
+                src={responseObj.user.profile_pic_url}
+                className="profile-picture"
+                alt="profile"
+              />
+              <div className="creator-info">
+                <h3>{responseObj.user.username}</h3>
+                <p>{responseObj.user.full_name}</p>
+              </div>
+            </div>
+          </header>
+          <video controls className="reel-video">
+            <source
+              src={responseObj.video_versions[0].url}
+              type="video/webm"
+            ></source>
+          </video>
+          {/* <a className = "buttonDownload" target="_blank" download = "yasin.mp4" href={responseObj.video_versions[0].url} >Download !!!</a> */}
+          {/* <p className="reel-caption">{responseObj.caption.text}</p> */}
+          <a
+            className="buttonDownload"
+            target="_blank"
+            download="yasin.mp4"
+            href={responseObj.video_versions[0].url}
+          >
+            Download
+          </a>
+          <p className="reel-caption">{responseObj.caption.text}</p>
+          {(() => {
+            if (responseObj.caption === "NULL") {
+              return <div>No Captions</div>;
+            } else if (responseObj.caption) {
+              return <p className="post-caption">{responseObj.caption.text}</p>;
+            }
+          })()}
+        </>
+      )}
       {exchangeRate && convertedAmount && (
         <p>
           {amount} {baseCurrency} is equal to {convertedAmount} {targetCurrency}

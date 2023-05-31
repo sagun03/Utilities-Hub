@@ -44,7 +44,7 @@ export const config = [
     subTitle:
       "A tool that converts between different currencies using real-time exchange rates. Users can input the amount in one currency and see the equivalent amount in another currency.",
     icon: <CurrencyExchangeIcon sx={{ color: "#4caf50" }} />,
-    path: "/currency-convertor",
+    path: "/currency-converter",
   },
   {
     title: "Image Compressor",

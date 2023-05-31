@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Footer from "../Components/Footer";
 
 const Wrapper = styled.div({
-  marginTop: "3.75rem",
+  marginTop: "3rem",
   overflow: "hidden",
 });
 
