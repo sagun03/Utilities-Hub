@@ -12,8 +12,9 @@ import Home from "./pages/Home";
 import PasswordGenerator from "./pages/PasswordGenerator";
 import PxToRem from "./pages/PxToRem";
 import BmiCalc from "./pages/BmiCalc";
-import CurrencyConverter from "./pages/CurrencyConverter";
+import ReelsDownloader from "./pages/ReelsDownloader";
 import QrCode from "./pages/QrCode";
+import ImageCompressor from "./pages/ImageCompressor";
 
 function App() {
   return (
@@ -31,14 +32,8 @@ function App() {
             component={PasswordGenerator}
           />
           <PrivateRoutes path="/bmi-calculator" component={BmiCalc} />
-          <PrivateRoutes
-            path="/currency-converter"
-            component={CurrencyConverter}
-          />
-          <PrivateRoutes
-            path="/image-compressor"
-            component={"image-compressor"}
-          />
+          <PrivateRoutes path="/reel-downloader" component={ReelsDownloader} />
+          <PrivateRoutes path="/image-compressor" component={ImageCompressor} />
           <PrivateRoutes path="/file-convertor" component={"file-convertor"} />
           <PrivateRoutes
             path="/markdown-editor"

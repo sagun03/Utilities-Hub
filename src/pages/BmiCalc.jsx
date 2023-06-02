@@ -218,7 +218,7 @@ const BmiCalc = () => {
       <Container>
         <Content>
           <CustomTypoGraphy variant="h4">
-            Detailed Fitness and Health Calculator
+            Fitness and Health Calculator
           </CustomTypoGraphy>
           <Form>
             <StyleWrapper>
@@ -302,7 +302,6 @@ const BmiCalc = () => {
                             displayEmpty
                             inputProps={{ "aria-label": "Without label" }}
                             onChange={(e) => setHeightCtg(e.target.value)}
-                            in
                           >
                             <MenuItem value={10}>foot</MenuItem>
                             <MenuItem value={20}>cm</MenuItem>

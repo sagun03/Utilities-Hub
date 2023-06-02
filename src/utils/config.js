@@ -1,6 +1,5 @@
 import PasswordIcon from "@mui/icons-material/Password";
 import CalculateIcon from "@mui/icons-material/Calculate";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import CompressIcon from "@mui/icons-material/Compress";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import CodeIcon from "@mui/icons-material/Code";
@@ -9,6 +8,7 @@ import ShutterSpeedIcon from "@mui/icons-material/ShutterSpeed";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const config = [
   {
@@ -40,11 +40,19 @@ export const config = [
     path: "/qr-code-generator",
   },
   {
-    title: "Currency Converter",
+    title: "Reels Downloader",
     subTitle:
-      "A tool that converts between different currencies using real-time exchange rates. Users can input the amount in one currency and see the equivalent amount in another currency.",
-    icon: <CurrencyExchangeIcon sx={{ color: "#4caf50" }} />,
-    path: "/currency-converter",
+      "An Instagram Reel downloader is a tool or application that allows users to download or save Instagram Reels to their devices. Instagram Reels are short, multi-clip videos that users can create and share on the Instagram platform.",
+    icon: (
+      <InstagramIcon
+        sx={{
+          background:
+            "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);",
+          color: "white",
+        }}
+      />
+    ),
+    path: "/reel-downloader",
   },
   {
     title: "Image Compressor",

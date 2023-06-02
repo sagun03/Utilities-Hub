@@ -99,14 +99,14 @@ const Navbar = () => {
               </CustomButton>
             </Link>
 
-            <Link to="/currency-converter">
+            <Link to="/reel-downloader">
               <CustomButton
-                selected={location.pathname === "/currency-converter"}
+                selected={location.pathname === "/reel-downloader"}
                 size="small"
                 disableFocusRipple
                 disableRipple
               >
-                Currency Converter
+                Reels Downloader
               </CustomButton>
             </Link>
 
