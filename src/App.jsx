@@ -15,6 +15,8 @@ import BmiCalc from "./pages/BmiCalc";
 import ReelsDownloader from "./pages/ReelsDownloader";
 import QrCode from "./pages/QrCode";
 import ImageCompressor from "./pages/ImageCompressor";
+import PomodoroTimer from "./pages/PomodoroTimer";
+import YoutubeDownloader from "./pages/YoutubeDownloader";
 
 function App() {
   return (
@@ -34,16 +36,16 @@ function App() {
           <PrivateRoutes path="/bmi-calculator" component={BmiCalc} />
           <PrivateRoutes path="/reel-downloader" component={ReelsDownloader} />
           <PrivateRoutes path="/image-compressor" component={ImageCompressor} />
-          <PrivateRoutes path="/file-convertor" component={"file-convertor"} />
+          <PrivateRoutes
+            path="/youtube-downloader"
+            component={YoutubeDownloader}
+          />
           <PrivateRoutes
             path="/markdown-editor"
             component={"<>markdown-editor</>"}
           />
           <PrivateRoutes path="/px-to-rem" component={PxToRem} />
-          <PrivateRoutes
-            path="/pomodoro-timer"
-            component={"PasswordGenerator"}
-          />
+          <PrivateRoutes path="/pomodoro-timer" component={PomodoroTimer} />
           <PrivateRoutes path="/qr-code-generator" component={QrCode} />
           <PrivateRoutes
             path="/password-strength-checker"

@@ -205,7 +205,7 @@ const ReelsDownloader = () => {
       <Container>
         <Content>
           <CustomTypoGraphy variant="h4">Reels Downloader</CustomTypoGraphy>
-          <div
+          <section
             style={{
               display: "flex",
               justifyContent: "center",
@@ -222,7 +222,7 @@ const ReelsDownloader = () => {
                 width: "5rem",
               }}
             />
-          </div>
+          </section>
 
           <Form>
             <TextField
@@ -265,88 +265,6 @@ const ReelsDownloader = () => {
         />
       )}
     </Wrapper>
-    // <div>
-    //   <h1>Reels Downloader</h1>
-    //   <header className="reel-header">
-    //     <div className="reel-creator">
-    //       <img
-    //         src={responseObj?.user?.profile_pic_url}
-    //         className="profile-picture"
-    //         alt="profile"
-    //       />
-    //       <div className="creator-info">
-    //         <h3>{responseObj?.user?.username}</h3>
-    //         <p>{responseObj?.user?.full_name}</p>
-    //       </div>
-    //     </div>
-    //   </header>
-    //   <div>
-    //     <label>From:</label>
-    //     <select value={baseCurrency} onChange={handleBaseCurrencyChange}>
-    //       <option value="USD">USD</option>
-    //       <option value="EUR">EUR</option>
-    //       <option value="GBP">GBP</option>
-    //       {/* Add more currency options here */}
-    //     </select>
-    //   </div>
-    //   <div>
-    //     <label>To:</label>
-    //     <select value={targetCurrency} onChange={handleTargetCurrencyChange}>
-    //       <option value="EUR">EUR</option>
-    //       <option value="USD">USD</option>
-    //       <option value="GBP">GBP</option>
-    //       {/* Add more currency options here */}
-    //     </select>
-    //   </div>
-    //   <button onClick={fetchReel}>Convert</button>
-    //   {responseObj && (
-    //     <>
-    //       {" "}
-    //       <header className="reel-header">
-    //         <div className="reel-creator">
-    //           <img
-    //             src={responseObj.user.profile_pic_url}
-    //             className="profile-picture"
-    //             alt="profile"
-    //           />
-    //           <div className="creator-info">
-    //             <h3>{responseObj.user.username}</h3>
-    //             <p>{responseObj.user.full_name}</p>
-    //           </div>
-    //         </div>
-    //       </header>
-    //       <video controls className="reel-video">
-    //         <source
-    //           src={responseObj.video_versions[0].url}
-    //           type="video/webm"
-    //         ></source>
-    //       </video>
-    //       {/* <a className = "buttonDownload" target="_blank" download = "yasin.mp4" href={responseObj.video_versions[0].url} >Download !!!</a> */}
-    //       {/* <p className="reel-caption">{responseObj.caption.text}</p> */}
-    //       <a
-    //         className="buttonDownload"
-    //         target="_blank"
-    //         download="yasin.mp4"
-    //         href={responseObj.video_versions[0].url}
-    //       >
-    //         Download
-    //       </a>
-    //       <p className="reel-caption">{responseObj.caption.text}</p>
-    //       {(() => {
-    //         if (responseObj.caption === "NULL") {
-    //           return <div>No Captions</div>;
-    //         } else if (responseObj.caption) {
-    //           return <p className="post-caption">{responseObj.caption.text}</p>;
-    //         }
-    //       })()}
-    //     </>
-    //   )}
-    //   {exchangeRate && convertedAmount && (
-    //     <p>
-    //       {amount} {baseCurrency} is equal to {convertedAmount} {targetCurrency}
-    //     </p>
-    //   )}
-    // </div>
   );
 };
 

@@ -1,14 +1,14 @@
 import PasswordIcon from "@mui/icons-material/Password";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import CompressIcon from "@mui/icons-material/Compress";
-import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
-import CodeIcon from "@mui/icons-material/Code";
+// import CodeIcon from "@mui/icons-material/Code";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
-import ShutterSpeedIcon from "@mui/icons-material/ShutterSpeed";
+// import ShutterSpeedIcon from "@mui/icons-material/ShutterSpeed";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
-import TextFieldsIcon from "@mui/icons-material/TextFields";
+// import VpnKeyIcon from "@mui/icons-material/VpnKey";
+// import TextFieldsIcon from "@mui/icons-material/TextFields";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 export const config = [
   {
@@ -62,38 +62,38 @@ export const config = [
     path: "/image-compressor",
   },
   {
-    title: "File Converter",
+    title: "Youtube Videos/Shorts Downloader",
     subTitle:
-      "A file conversion tool that supports converting various file formats, such as document formats (PDF to Word), image formats (JPG to PNG), audio formats (MP3 to WAV), or video formats (MP4 to GIF).",
-    icon: <DriveFileMoveIcon sx={{ color: "#00838f" }} />,
-    path: "/file-convertor",
+      "A Youtube Videos/Shorts Downloader downloader is a tool or application that allows users to download or save Youtube Shorts and Video to their devices.",
+    icon: <YouTubeIcon sx={{ color: "#c4302B" }} />,
+    path: "/youtube-downloader",
   },
-  {
-    title: "Markdown Editor",
-    subTitle:
-      "a Markdown editor that provides a user-friendly interface for writing and previewing Markdown-formatted text. Users can create formatted content and export it to HTML or other formats.",
-    icon: <CodeIcon sx={{ color: "#3f51b5" }} />,
-    path: "/markdown-editor",
-  },
-  {
-    title: "Pomodoro Timer",
-    subTitle:
-      "A a Pomodoro technique timer that helps users manage their time and improve productivity. It includes adjustable work and break intervals, notifications, and tracking features",
-    icon: <ShutterSpeedIcon sx={{ color: "#18ff" }} />,
-    path: "/pomodoro-timer",
-  },
-  {
-    title: "Password Strength Checker",
-    subTitle:
-      "A tool that assesses the strength of a password entered by the user. It can analyze factors like length, complexity, and common patterns to provide feedback on the password's strength.",
-    icon: <VpnKeyIcon sx={{ color: "#c51162" }} />,
-    path: "/password-strength-checker",
-  },
-  {
-    title: "Lorem Ipsum Generator",
-    subTitle:
-      "A utility that generates placeholder text in the form of Lorem Ipsum. Users can specify the number of paragraphs or words required, making it useful for design and development purposes.",
-    icon: <TextFieldsIcon sx={{ color: "#d50000" }} />,
-    path: "/lorem-ipsum-generator",
-  },
+  // {
+  //   title: "Markdown Editor",
+  //   subTitle:
+  //     "a Markdown editor that provides a user-friendly interface for writing and previewing Markdown-formatted text. Users can create formatted content and export it to HTML or other formats.",
+  //   icon: <CodeIcon sx={{ color: "#3f51b5" }} />,
+  //   path: "/markdown-editor",
+  // },
+  // {
+  //   title: "Pomodoro Timer",
+  //   subTitle:
+  //     "A a Pomodoro technique timer that helps users manage their time and improve productivity. It includes adjustable work and break intervals, notifications, and tracking features",
+  //   icon: <ShutterSpeedIcon sx={{ color: "#18ff" }} />,
+  //   path: "/pomodoro-timer",
+  // },
+  // {
+  //   title: "Password Strength Checker",
+  //   subTitle:
+  //     "A tool that assesses the strength of a password entered by the user. It can analyze factors like length, complexity, and common patterns to provide feedback on the password's strength.",
+  //   icon: <VpnKeyIcon sx={{ color: "#c51162" }} />,
+  //   path: "/password-strength-checker",
+  // },
+  // {
+  //   title: "Lorem Ipsum Generator",
+  //   subTitle:
+  //     "A utility that generates placeholder text in the form of Lorem Ipsum. Users can specify the number of paragraphs or words required, making it useful for design and development purposes.",
+  //   icon: <TextFieldsIcon sx={{ color: "#d50000" }} />,
+  //   path: "/lorem-ipsum-generator",
+  // },
 ];
