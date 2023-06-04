@@ -34,10 +34,10 @@ const ButtonWrapper = styled.div({
   flex: "1 1",
 });
 
-const MenuWrapper = styled.div({
-  justifyContent: "flex-end",
-  display: "flex",
-});
+// const MenuWrapper = styled.div({
+//   justifyContent: "flex-end",
+//   display: "flex",
+// });
 
 const CustomButton = muiStyled(Button)((props) => ({
   color: props?.selected ? "#1976d2" : "black",
@@ -45,26 +45,26 @@ const CustomButton = muiStyled(Button)((props) => ({
   fontSize: "0.75rem",
 }));
 
-const CustomMenuButton = muiStyled(Button)((props) => ({
-  color: props?.login ? "black" : "white",
-  fontSize: "0.75rem",
-  background: props?.login ? "#f3f0ec" : "#1976d2",
-  paddingLeft: "16px",
-  paddingRight: "16px",
-  height: "100%",
-  borderRadius: "0px",
-  fontWeight: props?.login ? "400" : "700",
-  "&:hover": {
-    backgroundColor: "#383e45",
-    color: "#fff",
-    fontWeight: "700",
-  },
-}));
+// const CustomMenuButton = muiStyled(Button)((props) => ({
+//   color: props?.login ? "black" : "white",
+//   fontSize: "0.75rem",
+//   background: props?.login ? "#f3f0ec" : "#1976d2",
+//   paddingLeft: "16px",
+//   paddingRight: "16px",
+//   height: "100%",
+//   borderRadius: "0px",
+//   fontWeight: props?.login ? "400" : "700",
+//   "&:hover": {
+//     backgroundColor: "#383e45",
+//     color: "#fff",
+//     fontWeight: "700",
+//   },
+// }));
 
 const Navbar = () => {
-  const handleClick = () => {
-    localStorage.removeItem("Token");
-  };
+  // const handleClick = () => {
+  //   localStorage.removeItem("Token");
+  // };
   let location = useLocation();
   return (
     <NavBarContainer>
@@ -121,7 +121,7 @@ const Navbar = () => {
               </CustomButton>
             </Link>
           </ButtonWrapper>
-          <MenuWrapper>
+          {/* <MenuWrapper>
             <Link to="/login" onClick={() => handleClick()}>
               <CustomMenuButton login size="small" disableRipple>
                 Log In
@@ -133,7 +133,7 @@ const Navbar = () => {
                 Sign Up
               </CustomMenuButton>
             </Link>
-          </MenuWrapper>
+          </MenuWrapper> */}
         </Toolbar>
       </AppBar>
     </NavBarContainer>

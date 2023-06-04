@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { config } from "../utils/config";
 import { useEffect } from "react";
 import wawe from "../utils/img/wawe.png";
+const Quote = require("inspirational-quotes");
 
 const HomeTitle = styled.div({
   position: "relative",
@@ -21,12 +22,15 @@ const getColor = (variant) => {
   switch (variant) {
     case "h6":
       return "#383e45";
+    case "h3":
+      return "black";
     case "subtitle1":
       return "#626870";
     default:
       return "#fff";
   }
 };
+
 const getFontSize = (variant) => {
   // eslint-disable-next-line default-case
   switch (variant) {
@@ -137,11 +141,22 @@ const Image = styled.img({
   float: "left",
   transform: "rotate(3deg)",
 });
+const QouteWrapper = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "1rem",
+  padding: "2rem",
+  marginTop: "5rem",
+});
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  console.log(Quote.getQuote()); // returns quote (text and author)
+
   return (
     <>
       <HomeTitle>
@@ -173,6 +188,13 @@ const Home = () => {
             </ToolsItem>
           ))}
         </ToolsContainer>
+        <QouteWrapper>
+          <Typography variant="h5" align="center" sx={{ fontWeight: "500" }}>
+            <q> {Quote.getQuote().text} </q>
+          </Typography>
+
+          <em>{Quote.getQuote().author}</em>
+        </QouteWrapper>
       </ToolsWrapper>
     </>
   );
